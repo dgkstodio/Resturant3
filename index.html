@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUREUM - Luxury Dining Experience</title>
+    
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="AUREUM - Fine dining Thai-Western fusion restaurant with premium ingredients, truffle, caviar, and Wagyu beef. Experience luxury in every bite.">
+    <meta name="keywords" content="luxury restaurant, fine dining, aureum, golden dining, bangkok restaurant">
+    
+    <!-- Google Fonts: Cinzel (Serif) & Montserrat (Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Supabase JS Client CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <span class="logo-main" id="brand-logo">AUREUM</span>
+                <span class="logo-sub">Gastronomy</span>
+            </div>
+            <nav>
+                <a href="#home">หน้าแรก</a>
+                <a href="#featured">แนะนำ</a>
+                <a href="#menu">เมนูอาหาร</a>
+                <a href="#contact">ติดต่อเรา</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="btn-gold-outline" id="admin-toggle-btn">
+                    <i data-lucide="shield"></i>
+                    <span id="admin-btn-text">ผู้จัดการ</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <span class="hero-subtitle">Welcome to AUREUM</span>
+                <h1>สัมผัสความหรูหรา <span>ในทุกคำที่คัดสรร</span></h1>
+                <p class="hero-description">รังสรรค์เมนูฟิวชัน ไทย-ตะวันตก ระดับพรีเมียมด้วยวัตถุดิบชั้นเลิศ ผสมผสานรสชาติดั้งเดิมเข้ากับศิลปะการทำอาหารยุคใหม่ในบรรยากาศสุดเอ็กซ์คลูซีฟ</p>
+                <a href="#menu" class="btn-gold">
+                    <i data-lucide="menu"></i>
+                    ดูเมนูแนะนำ
+                </a>
+            </div>
+        </section>
+
+        <!-- Featured Section -->
+        <section id="featured" class="featured">
+            <div class="section-header">
+                <span class="section-subtitle">Chef's Selection</span>
+                <h2 class="section-title">เมนูแนะนำระดับซิกเนเจอร์</h2>
+            </div>
+            <div class="featured-grid" id="featured-items-container">
+                <!-- Dynamic loading featured items -->
+                <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">
+                    <i data-lucide="loader" class="animate-spin"></i> กำลังโหลดข้อมูล...
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="menu">
+            <div class="section-header">
+                <span class="section-subtitle">Our Menu</span>
+                <h2 class="section-title">รายการอาหารทั้งหมด</h2>
+            </div>
+
+            <!-- Menu Controls -->
+            <div class="menu-controls">
+                <div class="search-bar-wrapper">
+                    <i data-lucide="search" class="search-bar-icon"></i>
+                    <input type="text" id="menu-search" class="search-input" placeholder="ค้นหาเมนูอาหาร...">
+                </div>
+                <div class="category-tabs" id="category-container">
+                    <button class="category-tab active" data-category="all">ทั้งหมด</button>
+                    <button class="category-tab" data-category="starter">อาหารเรียกน้ำย่อย</button>
+                    <button class="category-tab" data-category="main">จานหลัก</button>
+                    <button class="category-tab" data-category="dessert">ของหวาน</button>
+                    <button class="category-tab" data-category="drink">เครื่องดื่ม</button>
+                </div>
+            </div>
+
+            <!-- Menu Gallery Grid -->
+            <div class="menu-gallery" id="menu-items-container">
+                <!-- Dynamic menu items will render here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="section-header">
+                <span class="section-subtitle">Reservation & Location</span>
+                <h2 class="section-title">การจองและติดต่อ</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-detail-item">
+                        <div class="contact-icon-wrapper">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div class="contact-detail-content">
+                            <h4>ที่ตั้งร้าน</h4>
+                            <p>ชั้น 55 อาคารโกลเด้นทาวเวอร์, ถนนสาทรเหนือ, สีลม, กรุงเทพฯ 10500</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <div class="contact-icon-wrapper">
+                            <i data-lucide="phone"></i>
+                        </div>
+                        <div class="contact-detail-content">
+                            <h4>สำรองที่นั่งโทร</h4>
+                            <p>02-123-4567, 089-999-8888</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail-item">
+                        <div class="contact-icon-wrapper">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="contact-detail-content">
+                            <h4>อีเมลติดต่อ</h4>
+                            <p>reservations@aureum-restaurant.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hours-card">
+                    <h3>เวลาเปิดให้บริการ</h3>
+                    <div class="hours-list">
+                        <div class="hours-row">
+                            <span>วันจันทร์ - วันพฤหัสบดี</span>
+                            <span>17:00 - 23:00 น.</span>
+                        </div>
+                        <div class="hours-row">
+                            <span>วันศุกร์ - วันเสาร์</span>
+                            <span>17:00 - 00:00 น.</span>
+                        </div>
+                        <div class="hours-row">
+                            <span>วันอาทิตย์</span>
+                            <span>12:00 - 22:00 น.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="logo">
+                    <span class="logo-main">AUREUM</span>
+                    <span class="logo-sub">Fine Dining Experience</span>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="social-link"><i data-lucide="instagram"></i></a>
+                    <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2026 AUREUM Restaurant. All rights reserved. Elegant Dining.</p>
+        </footer>
+
+        <!-- Floating Admin Session Status -->
+        <div class="admin-status-indicator" id="admin-indicator" style="display: none;">
+            <i data-lucide="unlock" style="color: var(--gold-primary);"></i>
+            <span>โหมดผู้จัดการทำงานอยู่</span>
+            <button class="btn-icon" id="admin-logout-btn" title="ออกจากระบบ" style="color: #ff4d4f;">
+                <i data-lucide="log-out"></i>
+            </button>
+        </div>
+
+        <!-- MODAL 1: Admin PIN Authentication -->
+        <div class="modal-overlay" id="pin-modal">
+            <div class="modal-container pin-prompt">
+                <div class="modal-header">
+                    <h3 class="modal-title">ยืนยันตัวตนผู้จัดการ</h3>
+                    <button class="close-btn modal-close" data-modal="pin-modal">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p style="color: var(--text-muted);">กรุณากรอกรหัส PIN 4 หลัก เพื่อเข้าสู่ระบบจัดการเมนู</p>
+                    <div class="pin-input-group">
+                        <input type="password" maxlength="1" class="pin-digit" id="pin-1" autofocus>
+                        <input type="password" maxlength="1" class="pin-digit" id="pin-2">
+                        <input type="password" maxlength="1" class="pin-digit" id="pin-3">
+                        <input type="password" maxlength="1" class="pin-digit" id="pin-4">
+                    </div>
+                    <p id="pin-error" style="color: #f5222d; display: none; margin-top: 1rem;">รหัส PIN ไม่ถูกต้อง ลองอีกครั้ง</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-gold-outline modal-close" data-modal="pin-modal">ยกเลิก</button>
+                    <button class="btn-gold" id="pin-submit-btn">ยืนยันรหัส</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL 2: Admin Dashboard (Dish List Management) -->
+        <div class="modal-overlay" id="dashboard-modal">
+            <div class="modal-container" style="max-width: 900px;">
+                <div class="modal-header">
+                    <h3 class="modal-title">ระบบจัดการเมนูอาหาร</h3>
+                    <button class="close-btn modal-close" data-modal="dashboard-modal">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="admin-section">
+                        <div class="admin-header-row">
+                            <h4 style="font-family: var(--font-serif); color: var(--gold-secondary);">รายการเมนูทั้งหมดในระบบ</h4>
+                            <button class="btn-gold" id="add-new-item-btn">
+                                <i data-lucide="plus"></i> เพิ่มเมนูใหม่
+                            </button>
+                        </div>
+                        <div class="admin-table-wrapper">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>รูปภาพ</th>
+                                        <th>ชื่อเมนู</th>
+                                        <th>หมวดหมู่</th>
+                                        <th>ราคา (บาท)</th>
+                                        <th>สถานะ</th>
+                                        <th>จัดการ</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-table-body">
+                                    <!-- Dynamic rows from script -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL 3: Add/Edit Item Form -->
+        <div class="modal-overlay" id="form-modal">
+            <div class="modal-container">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="form-modal-title">เพิ่มเมนูอาหารใหม่</h3>
+                    <button class="close-btn modal-close" data-modal="form-modal">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <form id="menu-item-form">
+                    <input type="hidden" id="form-item-id">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="form-name">ชื่อเมนูอาหาร (ภาษาไทย/อังกฤษ)</label>
+                            <input type="text" id="form-name" class="form-input" required placeholder="เช่น Wagyu Steak / สเต็กเนื้อวากิว">
+                        </div>
+                        <div class="form-group">
+                            <label for="form-description">คำอธิบายรายละเอียดอาหาร</label>
+                            <textarea id="form-description" class="form-textarea" placeholder="บอกจุดเด่น รายละเอียด รสชาติ หรือวัตถุดิบหลัก..."></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-price">ราคา (บาท)</label>
+                                <input type="number" id="form-price" class="form-input" min="0" step="1" required placeholder="เช่น 350">
+                            </div>
+                            <div class="form-group">
+                                <label for="form-category">หมวดหมู่</label>
+                                <select id="form-category" class="form-select" required>
+                                    <option value="starter">อาหารเรียกน้ำย่อย (Starter)</option>
+                                    <option value="main">จานหลัก (Main)</option>
+                                    <option value="dessert">ของหวาน (Dessert)</option>
+                                    <option value="drink">เครื่องดื่ม (Drink)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-image">URL รูปภาพเมนูอาหาร</label>
+                            <input type="url" id="form-image" class="form-input" placeholder="ใส่ลิงก์รูปภาพ เช่น https://images.unsplash.com/...">
+                            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">แนะนำใช้รูปภาพจาก Unsplash หรือฝากรูปตามเว็บไซต์และนำลิงก์มาใส่</p>
+                        </div>
+                        <div class="form-row" style="margin-top: 1rem;">
+                            <div class="form-group">
+                                <label class="form-checkbox">
+                                    <input type="checkbox" id="form-is-featured">
+                                    <span>เมนูแนะนำซิกเนเจอร์ (Featured)</span>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-checkbox">
+                                    <input type="checkbox" id="form-is-available" checked>
+                                    <span>พร้อมให้บริการ (Available)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-gold-outline modal-close" data-modal="form-modal">ยกเลิก</button>
+                        <button type="submit" class="btn-gold">บันทึกข้อมูล</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Application Config & Logic scripts -->
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
