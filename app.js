@@ -12,7 +12,7 @@ let searchQuery = '';
 const defaultMockData = [
   {
     id: "mock-1",
-    name: "Truffle Golden Dumplings",
+    name: "เกี๊ยวทรัฟเฟิลทองคำ (Truffle Golden Dumplings)",
     description: "เกี๊ยวนึ่งไส้หมูคุโรบุตะระดับพรีเมียม ท็อปด้วยทรัฟเฟิลบดบริสุทธิ์และทองคำเปลว 24K เลอค่า",
     price: 350.00,
     category: "starter",
@@ -22,7 +22,7 @@ const defaultMockData = [
   },
   {
     id: "mock-2",
-    name: "Caviar Butter Oysters",
+    name: "หอยนางรมคาเวียร์แชมเปญ (Caviar Butter Oysters)",
     description: "หอยนางรมนำเข้าสดใหม่ เสิร์ฟเย็นพร้อมคาเวียร์ฝรั่งเศสชั้นเลิศและซอสเนยแชมเปญ",
     price: 590.00,
     category: "starter",
@@ -32,7 +32,7 @@ const defaultMockData = [
   },
   {
     id: "mock-3",
-    name: "Wagyu Beef Massaman Curry",
+    name: "มัสมั่นเนื้อวากิว A5 (Wagyu Beef Massaman)",
     description: "แกงมัสมั่นเนื้อวากิว A5 เคี่ยวจนนุ่มละมุนลิ้น รสชาติเข้มข้น หอมเครื่องเทศ เสิร์ฟพร้อมโรตีกรอบร้อนๆ",
     price: 1250.00,
     category: "main",
@@ -42,7 +42,7 @@ const defaultMockData = [
   },
   {
     id: "mock-4",
-    name: "Lobster Pad Thai Caviar",
+    name: "ผัดไทยล็อบสเตอร์คาเวียร์ (Lobster Pad Thai Caviar)",
     description: "ผัดไทยเส้นจันท์เหนียวนุ่ม เสิร์ฟคู่กับกุ้งล็อบสเตอร์แคนาดาตัวโต ซอสมะขามสูตรลับโรยหน้าด้วยไข่ปลาคาเวียร์",
     price: 980.00,
     category: "main",
@@ -52,7 +52,7 @@ const defaultMockData = [
   },
   {
     id: "mock-5",
-    name: "Golden Saffron Crème Brûlée",
+    name: "เครมบรูเลหญ้าฝรั่นสีทอง (Saffron Crème Brûlée)",
     description: "เครมบรูเลสูตรคลาสสิกฝรั่งเศส หอมกลิ่นหญ้าฝรั่นสีทอง หน้าคาราเมลกรอบท็อปด้วยแผ่นทองคำเปลว",
     price: 280.00,
     category: "dessert",
@@ -62,7 +62,7 @@ const defaultMockData = [
   },
   {
     id: "mock-6",
-    name: "Royal Valrhona Chocolate Dome",
+    name: "โดมช็อกโกแลตซอสทองคำ (Royal Valrhona Chocolate Dome)",
     description: "ช็อกโกแลตมูสโดมทำจาก Valrhona ดาร์กช็อกโกแลตเข้มข้น ราดซอสคาราเมลอุ่นผสมเกล็ดทองคำแบบตระการตา",
     price: 320.00,
     category: "dessert",
@@ -72,7 +72,7 @@ const defaultMockData = [
   },
   {
     id: "mock-7",
-    name: "24K Gold Espresso Martini",
+    name: "เอสเพรสโซ่มาร์ตินี่ 24K (24K Gold Espresso Martini)",
     description: "วอดก้าพรีเมียมและเอสเพรสโซ่ช็อตเข้มข้น เขย่าจนเกิดฟองนุ่ม ตกแต่งด้วยแผ่นทองคำเปลวบริสุทธิ์ทานได้",
     price: 380.00,
     category: "drink",
