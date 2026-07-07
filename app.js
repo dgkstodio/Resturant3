@@ -90,6 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
   checkAdminSession();
 });
 
+// Track GA4 Custom Events helper
+function trackGA4Event(eventName, params = {}) {
+  if (typeof gtag === 'function') {
+    gtag('event', eventName, params);
+    console.log(`[GA4 Event] ${eventName}:`, params);
+  }
+}
+
 // Initialize Supabase or fall back to Demo Mode
 function initConnection() {
   const isDefaultUrl = SUPABASE_URL === "YOUR_SUPABASE_URL" || !SUPABASE_URL;
@@ -273,10 +281,21 @@ function createCardHTML(item, isFeaturedSection) {
 // Setup Application UI Action Event Listeners
 function setupEventListeners() {
   // Search filter
+  let searchTimeout;
   const searchInput = document.getElementById('menu-search');
   searchInput.addEventListener('input', (e) => {
     searchQuery = e.target.value;
     renderPublicView();
+
+    // Debounce search tracking to avoid spamming GA4
+    clearTimeout(searchTimeout);
+    if (searchQuery.trim().length > 0) {
+      searchTimeout = setTimeout(() => {
+        trackGA4Event('search', {
+          search_term: searchQuery
+        });
+      }, 1000); // 1-second delay
+    }
   });
 
   // Category filter tabs
@@ -289,6 +308,12 @@ function setupEventListeners() {
 
       currentCategory = e.target.getAttribute('data-category');
       renderPublicView();
+
+      // Track category selection
+      trackGA4Event('select_content', {
+        content_type: 'menu_category',
+        item_id: currentCategory
+      });
     }
   });
 
@@ -339,6 +364,7 @@ function setupEventListeners() {
     checkAdminSession();
     closeModal('dashboard-modal');
     closeModal('form-modal');
+    trackGA4Event('admin_logout');
     alert('ออกจากระบบผู้จัดการแล้ว');
   });
 
@@ -382,6 +408,9 @@ function verifyPIN() {
     closeModal('pin-modal');
     openModal('dashboard-modal');
     renderAdminDashboard();
+    
+    // Track successful login
+    trackGA4Event('login', { method: 'PIN', success: true });
   } else {
     pinError.style.display = 'block';
     // Clear and focus first
@@ -389,6 +418,9 @@ function verifyPIN() {
       input.value = '';
       if (index === 0) input.focus();
     });
+    
+    // Track failed login
+    trackGA4Event('login', { method: 'PIN', success: false });
   }
 }
 
@@ -494,6 +526,14 @@ window.deleteItem = async function(id) {
 
     renderPublicView();
     renderAdminDashboard();
+    
+    // Track item deletion
+    trackGA4Event('delete_menu_item', {
+      item_id: id,
+      item_name: item.name,
+      item_category: item.category
+    });
+    
     alert('ลบรายการสำเร็จ');
   } catch (error) {
     console.error("Error deleting item:", error);
@@ -577,6 +617,22 @@ async function handleFormSubmit(e) {
           return;
         }
       }
+    }
+
+    // Track GA4 event for add/edit operation
+    if (id) {
+      trackGA4Event('edit_menu_item', {
+        item_id: id,
+        item_name: name,
+        item_category: category,
+        item_price: price
+      });
+    } else {
+      trackGA4Event('add_menu_item', {
+        item_name: name,
+        item_category: category,
+        item_price: price
+      });
     }
 
     renderPublicView();

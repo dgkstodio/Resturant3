@@ -2,6 +2,20 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-26M5TEWJX7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        // Configure cookie_domain to 'none' if running from local file system (file://) to allow local testing
+        const gaConfig = {};
+        if (window.location.protocol === 'file:') {
+            gaConfig['cookie_domain'] = 'none';
+        }
+        gtag('config', 'G-26M5TEWJX7', gaConfig);
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AUREUM - Luxury Dining Experience</title>
     

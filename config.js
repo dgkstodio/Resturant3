@@ -8,3 +8,8 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 // Admin PIN for accessing the Add/Edit menu items dashboard.
 // Change this to secure your admin panel access.
 const ADMIN_PIN = "1234";
+
+// Google Analytics 4 (GA4) Measurement ID
+// Replace this with your actual GA4 Measurement ID (e.g., G-XXXXXXXXXX)
+const GA4_MEASUREMENT_ID = "G-26M5TEWJX7";
+
